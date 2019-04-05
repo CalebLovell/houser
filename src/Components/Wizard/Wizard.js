@@ -37,7 +37,6 @@ class Wizard extends Component {
           <input onChange={this.handleInput} type="text" id="state" />
           <label>Zip</label>
           <input onChange={this.handleInput} type="number" id="zip" />
-          <button type="submit">Submit</button>
         </form>
       </div>
     );
