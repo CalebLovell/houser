@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import House from "../House/House";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Dashboard extends Component {
   constructor() {
@@ -10,16 +11,16 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount = () => {
+  // componentDidMount = () => {
+  //   axios
+  //     .get()
 
-  }
+  // };
 
   render() {
     let mappedHouses = this.state.houses.map((house, i) => {
-      return (
-        <House key={i}/>
-      )
-    })
+      return <House key={i} />;
+    });
     return (
       <div className="Dashboard">
         Dashboard
