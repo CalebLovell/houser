@@ -24,6 +24,8 @@ app.use(
   })
 );
 
+app.get("/api/houses", controller.getHouses);
+
 app.listen(SERVER_PORT, () => {
   console.log(`server up and running on port: ${SERVER_PORT}`);
 });

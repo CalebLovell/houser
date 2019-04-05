@@ -10,14 +10,24 @@ class Dashboard extends Component {
     };
   }
 
+  componentDidMount = () => {
+
+  }
+
   render() {
+    let mappedHouses = this.state.houses.map((house, i) => {
+      return (
+        <House key={i}/>
+      )
+    })
     return (
       <div className="Dashboard">
         Dashboard
         <Link to="/wizard">
           <button>Add New Property</button>
         </Link>
-        <House />
+        <h2>Home Listings</h2>
+        {mappedHouses}
       </div>
     );
   }
