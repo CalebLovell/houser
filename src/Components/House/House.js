@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 class House extends Component {
-  deleteHouse = () => {
-    axios
-      .delete(`/api/house/${this.props.house.id}`)
-      .then(this.props.getAllHouses)
-      .catch(err => console.log(`u got an error: ${err}`));
-  };
+
 
   render() {
     // console.log(this.props.house.id);
@@ -18,7 +13,7 @@ class House extends Component {
         <p>{`City: ${this.props.house.city}`}</p>
         <p>{`State: ${this.props.house.state}`}</p>
         <p>{`Zip: ${this.props.house.zip}`}</p>
-        <button onClick={this.deleteHouse}>delete</button>
+        <button onClick={() => this.props.deleteHouse(this.props.id)}>delete</button>
       </div>
     );
   }

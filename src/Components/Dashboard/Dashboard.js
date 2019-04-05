@@ -11,6 +11,13 @@ class Dashboard extends Component {
     };
   }
 
+  deleteHouse = (id) => {
+    axios
+      .delete(`/api/house/${id}`)
+      .then(this.props.getAllHouses)
+      .catch(err => console.log(`u got an error: ${err}`));
+  };
+
   getAllHouses = () => {
     axios
       .get("/api/houses")
@@ -30,10 +37,9 @@ class Dashboard extends Component {
     this.getAllHouses();
   }
 
-
   render() {
     let mappedHouses = this.state.houses.map((house, i) => {
-      return <House key={i} house={house} getAllHouses={this.getAllHouses} id={house.id}/>;
+      return <House key={i} house={house} deleteHouse={this.deleteHouse} id={house.id}/>;
     });
     return (
       <div className="Dashboard">
