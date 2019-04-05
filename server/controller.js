@@ -11,22 +11,33 @@ module.exports = {
   },
   deleteHouse: async (req, res) => {
     const db = req.app.get("db");
-    const { id } = req.params
+    const { id } = req.params;
 
     await db
-        .deleteHouse(id)
-        .then(res.status(200))
-        .catch(err => console.log(`controller deleteHouse ${err}`));
+      .deleteHouse(id)
+      .then(res.status(200))
+      .catch(err => console.log(`controller deleteHouse ${err}`));
   },
   getHouse: async (req, res) => {
     const db = req.app.get("db");
-    const { id } = req.params
+    const { id } = req.params;
 
     await db
-        .getHouse(id)
+      .getHouse(id)
+      .then(house => {
+        res.status(200).send(house);
+      })
+      .catch(err => console.log(`controller getHouse ${err}`));
+  },
+  editHouse: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+
+    await db
+        .editHouse(id)
         .then(house => {
-            res.status(200).send(house);
-          })
-          .catch(err => console.log(`controller getHouse ${err}`));
+          res.status(200).send(house);
+        })
+        .catch(err => console.log(`controller editHouse ${err}`));
   }
 };
