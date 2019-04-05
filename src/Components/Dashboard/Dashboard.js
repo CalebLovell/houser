@@ -11,15 +11,29 @@ class Dashboard extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   axios
-  //     .get()
+  getAllHouses = () => {
+    axios
+      .get("/api/houses")
+      .then(result => {
+        this.setState({
+          houses: result.data
+        });
+      })
+      .catch(err => console.log(`u got an error: ${err}`));
+  };
 
-  // };
+  componentDidMount = () => {
+    this.getAllHouses();
+  };
+
+  componentDidUpdate = () => {
+    this.getAllHouses();
+  }
+
 
   render() {
     let mappedHouses = this.state.houses.map((house, i) => {
-      return <House key={i} />;
+      return <House key={i} house={house} getAllHouses={this.getAllHouses} id={house.id}/>;
     });
     return (
       <div className="Dashboard">

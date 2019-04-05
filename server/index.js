@@ -25,6 +25,9 @@ app.use(
 );
 
 app.get("/api/houses", controller.getHouses);
+app.delete("/api/house/:id", controller.deleteHouse);
+
+app.get("/api/house/:id", controller.getHouse); // extra for practice
 
 app.listen(SERVER_PORT, () => {
   console.log(`server up and running on port: ${SERVER_PORT}`);
